@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+/*ポップアップ*/
+#wrap{
+	width:400px;
+}
+
+p{
+	margin-bottom:2px;
+}
+
+.left{
+	display:inline-block;
+	*display:inline;
+    *zoom:1;
+    padding:0;
+	width:60%;
+}
+.right{
+	display:inline-block;
+	*display:inline;
+    *zoom:1;
+    vertical-align:top;
+    margin-left:10px;
+    padding:0;
+	width:30%;
+}
+
+#igl{
+	width:230px;
+}
