@@ -2,11 +2,11 @@ var url = location.href;
 var ig = 0;
 var rt = "iframe";
 
-window.onload = function(){
+document.addEventListener('DOMContentLoaded',function(){
 	
 	chrome.storage.sync.get(null,function(items){
 		var allKeys = Object.keys(items);
-		keylen = allKeys.length;
+		var keylen = allKeys.length;
 		//console.log(keylen);
 		
 		var ignoreCheck = new Promise(function(resolve,reject){
@@ -52,8 +52,7 @@ window.onload = function(){
 			if(ig == 0){
 				var elements = document.querySelectorAll(rt);
 				//console.log(elements);
-				var len = elements.length;
-				for(var i=0;i<len;i++){
+				for(var i=0,len=elements.length;i<len;i++){
 					var ng = document.defaultView.getComputedStyle(elements[i],null).getPropertyValue("overflow");
 					var tag = elements[i].tagName;
 					if(ng == "auto" || ng == "scroll" || tag == "IFRAME"){
@@ -65,4 +64,4 @@ window.onload = function(){
 		
 	});
 	
-};
+});

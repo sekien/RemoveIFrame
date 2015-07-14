@@ -3,10 +3,9 @@ chrome.tabs.getSelected(null,function(tab){
     document.getElementById("q").value = taburl;
 });
 
-var keylen;
 chrome.storage.sync.get(null,function(items){
 	var allKeys = Object.keys(items);
-	keylen = allKeys.length;
+	var keylen = allKeys.length;
 	//console.log(allKeys);
 	
 	var sct = document.getElementById("igl");
