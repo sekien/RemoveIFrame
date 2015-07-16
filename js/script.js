@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded',function(){
 		ignoreCheck.then(function(){
 			//console.log(ig);
 			if(ig == 0){
+				var iconpath = 'image/icon.png';
 				var elements = document.querySelectorAll(rt);
 				//console.log(elements);
 				for(var i=0,len=elements.length;i<len;i++){
@@ -59,7 +60,10 @@ document.addEventListener('DOMContentLoaded',function(){
 						elements[i].parentNode.removeChild(elements[i]);
 					}
 				}
+			}else{
+				var iconpath = 'image/ignore.png';
 			}
+			chrome.runtime.sendMessage({"changeIcon":iconpath});
 		});
 		
 	});
