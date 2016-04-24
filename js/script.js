@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded',function(){
 	chrome.storage.sync.get(null,function(items){
 		var allKeys = Object.keys(items);
 		var keylen = allKeys.length;
+		//console.log(items["remove_ftag"]);
 		//console.log(keylen);
 		
 		var ignoreCheck = new Promise(function(resolve,reject){
@@ -17,8 +18,7 @@ document.addEventListener('DOMContentLoaded',function(){
 				var j=0;
 				chrome.storage.sync.get(allKeys[i],function(e){
 					var key = Object.keys(e);
-					
-					if(key[0] == 'remove_div' || key[0] == 'remove_p' || key[0] == 'remove_ul'){
+					if(key[0] == 'remove_div' || key[0] == 'remove_p' || key[0] == 'remove_ul' || key[0] == 'remove_ftag'){
 						if(e[key[0]] == true){
 							var keyname = key[0].split("_");
 							rt += ',' + keyname[1];
@@ -56,9 +56,16 @@ document.addEventListener('DOMContentLoaded',function(){
 				for(var i=0,len=elements.length;i<len;i++){
 					var ng = document.defaultView.getComputedStyle(elements[i],null).getPropertyValue("overflow");
 					var tag = elements[i].tagName;
-					if(ng == "auto" || ng == "scroll" || tag == "IFRAME"){
+					
+					var fix;
+					if(items["remove_ftag"] == true){
+						fix = document.defaultView.getComputedStyle(elements[i],null).getPropertyValue("position");
+					}
+					
+					if(ng == "auto" || ng == "scroll" || tag == "IFRAME" || fix == "fixed"){
 						elements[i].parentNode.removeChild(elements[i]);
 					}
+					
 				}
 			}else{
 				var iconpath = 'image/ignore.png';

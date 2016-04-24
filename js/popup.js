@@ -14,7 +14,7 @@ chrome.storage.sync.get(null,function(items){
 		chrome.storage.sync.get(allKeys[k],function(e){
 			var key = Object.keys(e);
 			
-			if(key[0] == 'remove_div' || key[0] == 'remove_p' || key[0] == 'remove_ul'){
+			if(key[0] == 'remove_div' || key[0] == 'remove_p' || key[0] == 'remove_ul' || key[0] == 'remove_ftag'){
 				if(e[key[0]] == true){
 					document.getElementById(key[0]).checked = true;
 				}
@@ -94,3 +94,27 @@ document.getElementById("tags").onclick = function(){
 	});
 }
 
+
+document.getElementById("set_removefix").onclick = function(){
+	var rf = document.getElementById("remove_ftag").checked;
+	var item = {};
+	
+	item['remove_ftag'] = rf;
+	/*
+	if(rf == true){
+		item['remove_fixed'] = "on";
+	}else{
+		item['remove_fixed'] = "off";
+	}
+	*/
+	
+	
+	chrome.storage.sync.set(item,function(){
+		if(chrome.runtime.error){
+			alert("chrome.runtime.error");
+		}else{
+			alert("set");
+			window.close();
+		}
+	});
+}
