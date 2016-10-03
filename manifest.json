@@ -1,6 +1,6 @@
 {
 	"name": "RemoveIFrame",
-	"version": "0.4",
+	"version": "0.4.1",
 	"manifest_version": 2,
 	"description": "remove the inline frame",
 	"icons": {
