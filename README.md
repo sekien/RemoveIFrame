@@ -8,6 +8,9 @@ Usage
 
 chrome://extensions/
 
+
+![screenshot](http://youkaimap.php.xdomain.jp/rft/ss.png "screenshot")
+
 Licence
 ---------------------------------
 The MIT License (MIT)
